@@ -1,5 +1,6 @@
 import ctypes
 import logging
+import time
 from pathlib import Path
 from typing import List, Optional, Tuple, cast
 
@@ -58,7 +59,6 @@ class PointCloud(object):
         self.path = path
         self.points = points
         self.colors = colors if type(colors) == np.ndarray and len(colors) > 0 else None
-
         self.labels = None
         if LabelConfig().type == LabelingMode.SEMANTIC_SEGMENTATION:
             self.labels = segmentation_labels
@@ -98,7 +98,14 @@ class PointCloud(object):
                     "Generated colors for colorless point cloud based on `colorless_color`."
                 )
         if write_buffer:
+            logging.info(
+                "Putting point cloud to buffer."
+            )
+            start_time = time.time()
             self.create_buffers()
+            logging.info(
+                f"Successfully put point cloud to buffer in {time.time() - start_time} seconds."
+            )
 
         logging.info(green(f"Successfully loaded point cloud from {path}!"))
         self.print_details()
