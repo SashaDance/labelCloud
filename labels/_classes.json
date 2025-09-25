@@ -6,21 +6,26 @@
             "color": "#9da2ab"
         },
         {
-            "name": "cart",
+            "name": "road",
             "id": 1,
-            "color": "#f156ff"
+            "color": "#0000ff"
         },
         {
-            "name": "box",
+            "name": "car",
             "id": 2,
-            "color": "#f57900"
+            "color": "#aa0000"
+        },
+        {
+            "name": "tramway",
+            "id": 3,
+            "color": "#bccc66"
         }
     ],
     "default": 0,
-    "type": "object_detection",
-    "format": "centroid_abs",
+    "type": "semantic_segmentation",
+    "format": "binary",
     "created_with": {
         "name": "labelCloud",
-        "version": "1.0.1"
+        "version": "1.1.1"
     }
 }
